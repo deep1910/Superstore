@@ -7,6 +7,7 @@
 <img src="assets/4.png" ></img>
 <img src="assets/5.png" ></img>
 
-
+<br>
+<details>pip install venv</details>
 
 
