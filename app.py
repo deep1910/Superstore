@@ -123,51 +123,51 @@ with st.expander("View Data of TimeSeries"):
     st.download_button("Download Data", data= csv , file_name="TimeSeries.csv", mime="text/csv", )
 
 
-# st.subheader("Hierarchical view od Sales using TreeMap")
-# fig3 = px.treemap(filtered_df, path=["Region", "Category", "Sub-Category"], values= "Sales", hover_data=["Sales"],
-#                   color= "Sub-Category")
-# fig3.update_layout(width= 800, height= 650)
-# st.plotly_chart(fig3,use_container_width=True )    
+st.subheader("Hierarchical view od Sales using TreeMap")
+fig3 = px.treemap(filtered_df, path=["Region", "Category", "Sub-Category"], values= "Sales", hover_data=["Sales"],
+                  color= "Sub-Category")
+fig3.update_layout(width= 800, height= 650)
+st.plotly_chart(fig3,use_container_width=True )    
 
 
-# chart1, chart2 = st.columns((2))
-# with chart1 :
-#     st.subheader("Segment wise Sales")
-#     fig = px.pie(filtered_df, values = "Sales", names = "Segment", template= "plotly_dark")
-#     fig.update_traces(text= filtered_df["Category"], textposition = "inside")
-#     st.plotly_chart(fig, use_container_width=True)
+chart1, chart2 = st.columns((2))
+with chart1 :
+    st.subheader("Segment wise Sales")
+    fig = px.pie(filtered_df, values = "Sales", names = "Segment", template= "plotly_dark")
+    fig.update_traces(text= filtered_df["Category"], textposition = "inside")
+    st.plotly_chart(fig, use_container_width=True)
 
-# with chart2 :
-#     st.subheader("Category wise Sales")
-#     fig = px.pie(filtered_df, values = "Sales", names = "Category", template= "gridon")
-#     fig.update_traces(text= filtered_df["Category"], textposition = "inside")
-#     st.plotly_chart(fig, use_container_width=True)    
-
-
-# import plotly.figure_factory as ff
-# st.subheader(":point_right: Month wise Sub-category Sales Summary")
-# with st.expander("Summary_Table"):
-#     df_sample = df[0:5][["Region", "State", "City", "Category", "Sales", "Profit", "Quantity"]]
-#     fig = ff.create_table(df_sample, colorscale="Cividis") 
-#     st.plotly_chart(fig,use_container_width=True) 
-
-#     st.markdown("Month wise sub-Catgory Table")
-#     filtered_df["month"] = filtered_df["Order Date"].dt.month_name()
-#     sub_category_Year = pd.pivot_table(data = filtered_df , values= "Sales", index= ["Sub-Category"], columns= "month")
-#     st.write(sub_category_Year.style.background_gradient(cmap="Blues"))
+with chart2 :
+    st.subheader("Category wise Sales")
+    fig = px.pie(filtered_df, values = "Sales", names = "Category", template= "gridon")
+    fig.update_traces(text= filtered_df["Category"], textposition = "inside")
+    st.plotly_chart(fig, use_container_width=True)    
 
 
-# data1 = px.scatter(filtered_df, x = "Sales", y = "Profit", size= "Quantity")
-# data1["layout"].update(title="Relationship between Sales and Profits using Scatter Plot", 
-#                        titlefont= dict(size=20), xaxis= dict(title="Sales", titlefont=dict(size=20)),
-#                        yaxis = dict(title= "Profit", titlefont = dict(size=19)))
-# st.plotly_chart(data1, use_container_width=True)
+import plotly.figure_factory as ff
+st.subheader(":point_right: Month wise Sub-category Sales Summary")
+with st.expander("Summary_Table"):
+    df_sample = df[0:5][["Region", "State", "City", "Category", "Sales", "Profit", "Quantity"]]
+    fig = ff.create_table(df_sample, colorscale="Cividis") 
+    st.plotly_chart(fig,use_container_width=True) 
 
-# with st.expander("View Data"):
-#    st.write(filtered_df.iloc[:500, 1:20:2].style.background_gradient(cmap="Oranges"))
+    st.markdown("Month wise sub-Catgory Table")
+    filtered_df["month"] = filtered_df["Order Date"].dt.month_name()
+    sub_category_Year = pd.pivot_table(data = filtered_df , values= "Sales", index= ["Sub-Category"], columns= "month")
+    st.write(sub_category_Year.style.background_gradient(cmap="Blues"))
 
 
-# csv = df.to_csv(index = False).encode('utf-8')
-# st.download_button("Download Data", data = csv , file_name= "Data.csv", mime = "text/csv")   
+data1 = px.scatter(filtered_df, x = "Sales", y = "Profit", size= "Quantity")
+data1["layout"].update(title="Relationship between Sales and Profits using Scatter Plot", 
+                       titlefont= dict(size=20), xaxis= dict(title="Sales", titlefont=dict(size=20)),
+                       yaxis = dict(title= "Profit", titlefont = dict(size=19)))
+st.plotly_chart(data1, use_container_width=True)
+
+with st.expander("View Data"):
+   st.write(filtered_df.iloc[:500, 1:20:2].style.background_gradient(cmap="Oranges"))
+
+
+csv = df.to_csv(index = False).encode('utf-8')
+st.download_button("Download Data", data = csv , file_name= "Data.csv", mime = "text/csv")   
 
 
