@@ -1,8 +1,7 @@
 # 📊Superstore Analysis DashBoard📊
 <p>All in one platform for all your Sales Analysis</p>
 <br>
-<br>
-<a href="https://superstore.streamlit.app/"></a>
+
 <br>  
 <img src="assets/1.png" ></img>
 <img src="assets/2.png" ></img>
