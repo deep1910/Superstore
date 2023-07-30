@@ -18,7 +18,7 @@ if fl is not None:
     st.write(filename)
     df= pd.read_csv(filename , encoding="ISO-8859-1")
 else:
-    os.chdir(r"/home/deep/Desktop/streamlit/")
+    # os.chdir(r"/home/deep/Desktop/streamlit/")
     df =pd.read_csv("Superstore.csv", encoding="ISO-8859-1")
 
 
