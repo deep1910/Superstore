@@ -91,36 +91,36 @@ with col2:
 
 
 
-# cl1 , cl2 = st.columns(2)
-# with cl1:
-#     with st.expander("Catgory_ViewData"):
-#         st.write(category_df.style.background_gradient(cmap = "Blues"))
-#         csv = category_df.to_csv(index = False).encode('utf-8')
-#         st.download_button("Download Data", data=csv, file_name="Category.csv", mime = 'text/csv',
-#                            help = "Click here to download the data as a CSV File")
+cl1 , cl2 = st.columns(2)
+with cl1:
+    with st.expander("Catgory_ViewData"):
+        st.write(category_df.style.background_gradient(cmap = "Blues"))
+        csv = category_df.to_csv(index = False).encode('utf-8')
+        st.download_button("Download Data", data=csv, file_name="Category.csv", mime = 'text/csv',
+                           help = "Click here to download the data as a CSV File")
         
 
-# with cl2:
-#     with  st.expander("Region_Viewdata"):
-#         region = filtered_df.groupby(by="Region", as_index =False)["Sales"].sum()
-#         st.write(region.style.background_gradient(cmap = "Oranges"))
-#         csv = region.to_csv(index = False).encode('utf-8')
-#         st.download_button("Download Data", data=csv, file_name="Region.csv", mime = 'text/csv',
-#                            help = "Click here to download the data as a CSV File")     
+with cl2:
+    with  st.expander("Region_Viewdata"):
+        region = filtered_df.groupby(by="Region", as_index =False)["Sales"].sum()
+        st.write(region.style.background_gradient(cmap = "Oranges"))
+        csv = region.to_csv(index = False).encode('utf-8')
+        st.download_button("Download Data", data=csv, file_name="Region.csv", mime = 'text/csv',
+                           help = "Click here to download the data as a CSV File")     
         
 
-# filtered_df["month_year"] = filtered_df["Order Date"].dt.to_period("M")
-# st.subheader("Time Series Analysis")
+filtered_df["month_year"] = filtered_df["Order Date"].dt.to_period("M")
+st.subheader("Time Series Analysis")
 
-# linechart = pd.DataFrame(filtered_df.groupby(filtered_df["month_year"].dt.strftime("%Y : %b"))["Sales"].sum()).reset_index()
-# fig2 = px.line(linechart, x ="month_year", y="Sales", labels = {"Sales": "Amount"}, width=1000, height= 500, template="gridon")
-# st.plotly_chart(fig2, use_container_width=True)
+linechart = pd.DataFrame(filtered_df.groupby(filtered_df["month_year"].dt.strftime("%Y : %b"))["Sales"].sum()).reset_index()
+fig2 = px.line(linechart, x ="month_year", y="Sales", labels = {"Sales": "Amount"}, width=1000, height= 500, template="gridon")
+st.plotly_chart(fig2, use_container_width=True)
 
 
-# with st.expander("View Data of TimeSeries"):
-#     st.write(linechart.T.style.background_gradient(cmap="Blues"))
-#     csv = linechart.to_csv(index=False).encode('utf-8')
-#     st.download_button("Download Data", data= csv , file_name="TimeSeries.csv", mime="text/csv", )
+with st.expander("View Data of TimeSeries"):
+    st.write(linechart.T.style.background_gradient(cmap="Blues"))
+    csv = linechart.to_csv(index=False).encode('utf-8')
+    st.download_button("Download Data", data= csv , file_name="TimeSeries.csv", mime="text/csv", )
 
 
 # st.subheader("Hierarchical view od Sales using TreeMap")
